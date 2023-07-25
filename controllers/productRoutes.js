@@ -3,7 +3,7 @@ import { Product } from "../models/product.js";
 
 
 //Add Product
-export const addProduct = async (req, res,next) => {
+export const addProduct = async (req, res, next) => {
 
     try {
         const { image, title, description } = req.body;
@@ -48,7 +48,7 @@ export const updateProduct = async (req, res, next) => {
         let product = await Product.findById(id);
 
         if (!product) return next(new ErrorHandler("Product Not Found", 404));
-        product = await Product.findByIdAndUpdate({_id:id},{$set:{title:req.body.title,description:req.body.description}});
+        product = await Product.findByIdAndUpdate({ _id: id }, { $set: { title: req.body.title, description: req.body.description } });
 
 
         res.status(200).json({
